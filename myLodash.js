@@ -40,12 +40,12 @@ MyLodash.uniq = function (values) {
     let newtab = [];
     for (let i = 0; i < values.length; i++) {
         let count = 0;
-        for( let j=0 ; j < newtab.length; j++) {
-            if(values[i] === newtab[j]) {
-                count ++
+        for (let j = 0; j < newtab.length; j++) {
+            if (values[i] === newtab[j]) {
+                count++
             }
         }
-        if(count === 0) {
+        if (count === 0) {
             newtab.push(values[i])
         }
     }
@@ -66,7 +66,21 @@ MyLodash.uniq = function (values) {
  * The order of result values is determined by the order they occur in the array.
  */
 MyLodash.uniqBy = function (values, extra) {
-    return values;
+    let newtab = [];
+    for (let i = 0; i < values.length; i++) {
+        let count = 0;
+        for (let j = -1; j < newtab.length; j++) {
+            if (extra(values[i]) === extra(newtab[j])) {
+                count ++
+            }  
+        }
+            
+        if (count === 0 ) {
+            newtab.push(values[i])
+            }
+    }
+console.log(newtab)
+return newtab;
     //return _.uniqBy(values, extra);
 };
 
@@ -76,11 +90,11 @@ MyLodash.uniqBy = function (values, extra) {
  */
 MyLodash.find = function (array, extra) {
     let newuser = []
-     for ( let i= 0; i<array.length; i++) {
-         if (extra(array[i]) === true) {
-             newuser.push(array[i])
-         }
-     }
+    for (let i = 0; i < array.length; i++) {
+        if (extra(array[i]) === true) {
+            newuser.push(array[i])
+        }
+    }
     return newuser;
     //return _.find(array, extra);
 }
