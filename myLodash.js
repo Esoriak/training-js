@@ -8,11 +8,12 @@ var MyLodash = {};
 MyLodash.trim = function (string) {
     let cleanstring = []
     for (let i = 0; i < string.length; i++) {
-        if (string[i] === " ") {
+        if (string[i] !== " ") {
             cleanstring.push(string[i])
         }
     }
-    return cleanstring
+    console.log(cleanstring.join(''))
+    return cleanstring.join('')
     // return _.trim(string);
 
 }
