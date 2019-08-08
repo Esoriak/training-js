@@ -1,31 +1,64 @@
-const _         = require("lodash");
+const _ = require("lodash");
 
-var MyLodash = { };
+var MyLodash = {};
 
 /**
  * Removes leading and trailing whitespace or specified characters from string.
  */
 MyLodash.trim = function (string) {
-    return string;
-    //return _.trim(string);
+    let cleanstring = []
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] === " ") {
+            cleanstring.push(string[i])
+        }
+    }
+    return cleanstring
+    // return _.trim(string);
+
 }
 
 /**
  * Reverses array so that the first element becomes the last, the second element becomes the second to last, and so on.
  */
 MyLodash.reverse = function (array) {
-    return array;
-    //return _.reverse(array);
+    let arrayrev = []
+    for (let i = array.length - 1; i >= 0; i--) {
+        arrayrev.push(array[i])
+    }
+    return arrayrev;
+    //     // return _.reverse(array);
 }
 
 /**
  * Creates a duplicate-free version of an array, using SameValueZero for equality comparisons, in which only the first occurrence of each element is kept. 
  * The order of result values is determined by the order they occur in the array.
  */
+
 MyLodash.uniq = function (values) {
-    return values;
-    //return _.uniq(values);
+
+    let newtab = [];
+    for (let i = 0; i < values.length; i++) {
+        let count = 0;
+        for( let j=0 ; j < newtab.length; j++) {
+            if(values[i] === newtab[j]) {
+                count ++
+            }
+        }
+        if(count === 0) {
+            newtab.push(values[i])
+        }
+    }
+    return newtab;
+    // return _.uniq(values);
 };
+
+// MyLodash.uniq = function ( values) {
+//     let newtab = []
+//     for (let i= 0; i<=2; i++) {
+//         newtab.push(values[i])
+//     }
+//     return newtab
+// }
 
 /**
  * This method is like _.uniq except that it accepts iteratee which is invoked for each element in array to generate the criterion by which uniqueness is computed. 
@@ -41,7 +74,13 @@ MyLodash.uniqBy = function (values, extra) {
  * The predicate is invoked with three arguments: (value, index|key, collection).
  */
 MyLodash.find = function (array, extra) {
-    return array;
+    let newuser = []
+     for ( let i= 0; i<array.length; i++) {
+         if (extra(array[i]) === true) {
+             newuser.push(array[i])
+         }
+     }
+    return newuser;
     //return _.find(array, extra);
 }
 
