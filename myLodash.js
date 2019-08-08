@@ -71,16 +71,16 @@ MyLodash.uniqBy = function (values, extra) {
         let count = 0;
         for (let j = -1; j < newtab.length; j++) {
             if (extra(values[i]) === extra(newtab[j])) {
-                count ++
-            }  
-        }
-            
-        if (count === 0 ) {
-            newtab.push(values[i])
+                count++
             }
+        }
+
+        if (count === 0) {
+            newtab.push(values[i])
+        }
     }
-console.log(newtab)
-return newtab;
+    console.log(newtab)
+    return newtab;
     //return _.uniqBy(values, extra);
 };
 
@@ -104,9 +104,33 @@ MyLodash.find = function (array, extra) {
  * This method performs a stable sort, that is, it preserves the original sort order of equal elements. 
  * The iteratees are invoked with one argument: (value).
  */
+// MyLodash.sortBy = function (array, extra) {
+//     let tabsort = []
+//     for (let i = 0; i < array.length; i++) {
+//         console.log(array[i].age)
+//         for (let j = 1; j < array.length; j++) {
+//             if (array[i].age < array[j].age) {
+//                 tabsort.push(array[i])
+//             }
+//         }
+//     }
+//     console.log(tabsort)
+//     return tabsort
+//     //return _.sortBy(array, extra);
+// }
+
 MyLodash.sortBy = function (array, extra) {
-    return array;
-    //return _.sortBy(array, extra);
+    let tabsort = []
+    for (let i = 0; i < array.length; i++) {
+        console.log(array[i].age)
+        for (let j = 1; j < array.length; j++) {
+            if (extra[array[i].age] < extra[array[j].age])  {
+                tabsort.push(extra[array[i]])
+            }
+        }
+    }
+    console.log(tabsort)
+    return tabsort
 }
 
 /**
