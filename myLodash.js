@@ -121,18 +121,19 @@ MyLodash.find = function (array, extra) {
 
 MyLodash.sortBy = function (array, extra) {
     let tabsort = []
-    for (let i = 0; i < array.length; i++) {
-        console.log(array[i].age)
-        for (let j = 1; j < array.length; j++) {
-            if (extra[array[i].age] < extra[array[j].age])  {
-                tabsort.push(extra[array[i]])
-            }
+
+    tabsort = array.sort((a,b) => {
+        if ( a[extra[0]].charCodeAt(0) - b[extra[0]].charCodeAt(0) != 0) {
+            return a[extra[0]].charCodeAt(0) - b[extra[0]].charCodeAt(0)
+        } else {
+            array.sort((c,d) => c[extra[1]] - d[extra[1]])
         }
-    }
+        
+    })
     console.log(tabsort)
     return tabsort
+    // return _.sortBy(array,extra) ;
 }
-
 /**
  * Creates an array of unique values that is the symmetric difference of the given arrays. 
  * The order of result values is determined by the order they occur in the arrays.
@@ -157,7 +158,12 @@ MyLodash.groupBy = function (array, extra) {
  * Recursively flattens array.
  */
 MyLodash.flattenDeep = function (array) {
-    return array;
+    let tab= []
+    for (let i=0; i < array.length; i++) {
+        for (let j= 0; j< array[i].length; j++)
+            tab.push(array[i[j]])
+    }
+    return tab;
     //return _.flattenDeep(array);
 }
 
